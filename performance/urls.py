@@ -11,6 +11,7 @@ urlpatterns = [
    path('home/lower-primary-performance/', performance_view.LowerPrimaryListView.as_view(), name="lower-primary-performance"),
    path('home/lower-primary-performance-create/', performance_view.LowerPrimaryCreateView.as_view(), name="lower-primary-performance-create"),
    path('home/lower-primary-performance/<int:pk>/update', performance_view.LowerPrimaryUpdateView.as_view(), name='lower-primary-performance-update'),
+   path('home/lower-primary-message/message', performance_view.lower_primary_message, name='lower-primary-message'),
    path('home/lower-primary-performance/<int:pk>/', performance_view.LowerPrimaryDetailView.as_view(), name='lower-primary-performance-details'),
    #upper primary urls
    path('home/upper-primary-performance/', performance_view.UpperPrimaryListView.as_view(), name="upper-primary-performance"),

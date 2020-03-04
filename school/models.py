@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.core.validators import RegexValidator
 from django.utils import timezone
-# r"(\+420)?\s*?(\d{3})\s*?(\d{3})\s*?(\d{3})"
 
 
 # pre_primary model
@@ -17,7 +16,7 @@ class Pre_primary(models.Model):
         ('Two', 'Pre_primary 1'),
     )
     name_regex = RegexValidator(regex=r"^[a-zA-Z\s]+$", message="Only characters are allowed for Student name.")
-    phone_number_regex = RegexValidator(regex=r'[07]\d{2}\d{3}\d{4}', message="Phone number must start with 0 if is valid try again!.")
+    phone_number_regex = RegexValidator(regex=r'(\+254)\s*?(\d{3})\s*?(\d{3})\s*?(\d{3})', message="invalid phone number, phone number should be in the format of +254")
     reg_regex = RegexValidator(regex=r'[P]\d{4}', message="Registration number should start with 'P' followed by 4 digits for pre primary otherwise invalid registration number.")
     student_name = models.CharField(validators=[name_regex], max_length=100)
     registration_number = models.CharField(validators=[reg_regex], max_length=50)
@@ -48,7 +47,7 @@ class Lower_primary(models.Model):
         ('Grade 1', 'Grade 1'),
     )
     name_regex = RegexValidator(regex=r"^[a-zA-Z\s]+$", message="Only characters are allowed for Student name.")
-    phone_number_regex = RegexValidator(regex=r'[07]\d{2}\d{3}\d{4}', message="Phone number must start with 0 if is valid try again!.")
+    phone_number_regex = RegexValidator(regex=r'[07]\d{2}\d{3}\d{4}', message="invalid phone number, phone number should be in the format of +254.")
     reg_regex = RegexValidator(regex=r'[L]\d{4}', message="Registration number should start with 'L' followed by 4 digits for lower primary otherwise invalid registration number.")
     student_name = models.CharField(validators=[name_regex], max_length=100)
     registration_number = models.CharField(validators=[reg_regex ], max_length=50)
@@ -77,7 +76,7 @@ class Upper_primary(models.Model):
         ('Grade 4', 'Grade 4'),
     )
     name_regex = RegexValidator(regex=r"^[a-zA-Z\s]+$", message="Only characters are allowed for Student name.")
-    phone_number_regex = RegexValidator(regex=r'[07]\d{2}\d{3}\d{4}', message="Phone number must start with 0 if is valid try again!!.")
+    phone_number_regex = RegexValidator(regex=r'[07]\d{2}\d{3}\d{4}', message="invalid phone number, phone number should be in the format of +254")
     reg_regex = RegexValidator(regex=r'[L]\d{4}', message="Registration number should start with 'U' followed by 4 digits for upper primary otherwise invalid registration number.")
     student_name = models.CharField(validators=[name_regex], max_length=100)
     registration_number = models.CharField(validators=[reg_regex], max_length=50)

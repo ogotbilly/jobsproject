@@ -10,10 +10,12 @@ urlpatterns = [
     path('', include('school.urls')),
     path('', include('performance.urls')),
     path('', include('messaging.urls')),
+    path('', include('attendance.urls')),
     path('register/', user_views.register, name='register'),
     path('home/', school_views.home, name='home'),
     path('home/profile/', user_views.profile, name='profile'),
     path('home/dashboard/', school_views.dashboard, name='dashboard'),
+    path('home/dashboard/<message_id>/delete', school_views.delete_messages, name="delete-message"),
     #start of pre_primary urls
     path('home/export-excel/', school_views.export_pre_primary_xls, name='pre-primary-export-excel'),
     path('home/students/', school_views.StudentsListView.as_view(), name='students'),

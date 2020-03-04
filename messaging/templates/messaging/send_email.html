@@ -1,0 +1,52 @@
+
+ {% extends 'school/base.html'%}
+ {% load static %}
+ {% block content %}
+ {% load crispy_forms_tags%}
+<div class="container pt-4">
+	<div class="card">
+		<div class="card-header">
+		<div class="navbar">
+			<div class="tooltip bs-tooltip-top" role="tooltip">
+			</div>
+            <div><a href="{% url 'home' %}" data-toggle="tooltip" title="home menu" class="card-link"><i class="fas fa-home"></i> Home</a></div>
+			<div><a href="{% url 'dashboard' %}" data-toggle="tooltip" title="teachers dashboard" class="card-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a></div>
+		</div>
+		</div>
+		<div class="container p-3">
+		{% if messages %}
+			{% for message in messages %}
+				<div class='text-center alert alert-{{message.tags}}' id="messagingmessage">
+				{{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
+        <form method="POST" action = "", class="m-3">
+		{% csrf_token %}
+        
+        {{ form|crispy }}
+				<button type="submit" class="btn btn-secondary m-3">Send Mail</button>
+        </form>
+			
+		</div>
+
+
+		<br>
+		<div class="card-footer">
+			<p class="text-center text-muted">&copy;Copyright new education support system 2019-2020. All Rights observed!</p>
+		</div>
+	</div>
+</div>
+<script>
+    setTimeout(function(){
+    if ($("#messagingmessage").length > 0 ){
+     $("#messagingmessage").remove();
+    }
+    }, 3000)
+</script>
+{% endblock content%}
+
+
+
+
+

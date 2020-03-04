@@ -15,10 +15,17 @@
 {% csrf_token %}
   {{ form|crispy }}
 {% if object %}
+<div class="d-flex justify-content-between">
  <button type="submit" name="signup_submit" class="btn btn-success"><i class="fas fa-edit"></i> Update student details</button>
-{% else %}
+ <a href="{% url 'lower-primary-students' %}" class="btn btn-danger">Cancel</a>
+ </div>
 
+{% else %}
+<div class="d-flex justify-content-between">
  <button type="submit" name="signup_submit" class="btn btn-success"><i class="fas fa-plus"></i> Save details</button>
+ <a href="{% url 'lower-primary-students' %}" class="btn btn-danger">Cancel</a>
+ </div>
+
 {% endif %}
 </form>
 </div>

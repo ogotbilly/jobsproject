@@ -9,6 +9,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 import xlwt
 from django.http import HttpResponse
 from .models import Pre_primary, Lower_primary, Upper_primary
+from messaging.models import Message
 
 
 @login_required
@@ -16,8 +17,19 @@ def home(request):
     return render(request, 'school/home.html')
 
 
+@login_required
 def dashboard(request):
-    return render(request, 'school/dashboard.html')
+    context = {
+        "message_sent": Message.objects.all()
+    }
+    
+    return render(request, 'school/dashboard.html', context)
+
+
+def delete_messages(request, message_id):
+    Message.objects.get(id=message_id).delete()
+    messages.success(request, 'Message has been deleted successfully.')
+    return redirect("dashboard")
 
 
 def track_progress(request):
@@ -34,7 +46,6 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)
-            messages.success(request, 'Your have successfully changed your password')
             return redirect('home')
         else:
             messages.error(request, 'There was an error, please try again latter')
@@ -349,3 +360,8 @@ def export_upper_primary_xls(request):
     wb.save(response)
 
     return response
+
+# viewing all the messages sent
+
+
+

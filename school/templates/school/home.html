@@ -3,8 +3,6 @@
  {% load static %}
  {% block content %}
 
-
-<!-- Modal -->
 <!-- Modal -->
 <div class="modal fade" id="myModal1" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -126,17 +124,41 @@
 				<a href="#" data-toggle="tooltip" title="main menu" class="card-link"><i class="fas fa-home"></i> Home</a>
 			</div>
 			<div><a href="{% url 'register' %}" data-toggle="tooltip" title="admin registration" class="card-link"><i class="fas fa-user-plus"></i> Register Admin</a></div>
-			<div><a href="{% url 'track-progress' %}" data-toggle="tooltip" title="view performance" class="card-link"><i class="far fa-circle"></i> Students performance</a></div>
-			<div><a href="{% url 'send-message' %}" data-toggle="tooltip" title="send text messages to parent" class="card-link"><i class="fas fa-envelope-open-text"></i> Text messages</a></div>
+        	<div class="dropdown">
+
+				<a class="card-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-circle"></i> Atendance Sheet
+			    </a>
+			    <div class="animated slideInDown slow-4s dropdown-menu" aria-labelledby="navbarDropdown">
+                <p class="dropdown-item ">Pre_primary Students</p>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-secondary" href="{% url 'pre-primary-1' %}">Pre_primary 1</a>
+                <a class="dropdown-item text-secondary" href="{% url 'pre-primary-2' %}">Pre_primary 2</a>
+                <div class="dropdown-divider"></div> 
+                <p class="dropdown-item">Lower_primary Students</p>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-secondary" href="{% url 'grade-1' %}">Grade 1</a>
+                <a class="dropdown-item text-secondary" href="{% url 'grade-2' %}">Grade 2</a>
+                <a class="dropdown-item text-secondary" href="{% url 'grade-3' %}">Grade 3</a>
+                <div class="dropdown-divider"></div>
+                <p class="dropdown-item">Upper_primary Students</p>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-secondary" href="{% url 'grade-4' %}">Grade 4</a>
+                <a class="dropdown-item text-secondary" href="{% url 'grade-5' %}">Grade 5</a>
+                <a class="dropdown-item text-secondary" href="{% url 'grade-6' %}">Grade 6</a>
+
+
+				</div>
+
+			</div>
+			<div><a href="{% url 'send-email' %}" data-toggle="tooltip" title="send email to parent" class="card-link"><i class="fas fa-envelope-open-text"></i> Email Console</a></div>
 			<div class="dropdown">
 
 				<a class="card-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-unlock-alt"></i> {{ user.username }}
 			    </a>
 			    <div class="animated slideInDown slow-4s dropdown-menu" aria-labelledby="navbarDropdown">
-                       <form method="POST">
+          <form method="POST">
 				        <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                        </form>
-				    	</form>
+          </form>
 
 				</div>
 

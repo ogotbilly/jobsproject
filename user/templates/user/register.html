@@ -9,8 +9,10 @@
 {% csrf_token %}
   <div class="text-center alert alert-danger">Please fields marked with <span class="text-danger">*</span> are all required </div>
   {{ form|crispy }}
-  
+  <div class="d-flex justify-content-between">
   <button type="submit" name="signup_submit" class="animated bounceInUp delay-1s btn btn-success"><i class="fa fa-users"></i> Register</button>
+  <a href="{% url 'home' %}" class="animated bounceIn delay-1s btn btn-danger">Cancel</a>
+  </div>
 </form>
 </div>
 {% endblock content%}
