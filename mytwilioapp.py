@@ -59,12 +59,46 @@ message = client.messages \
                 .create(
                      body="hello mr felix, you current",
                      from_='+12248033141',
-                     to='+254711213592'
+
+                     to='+254727750213'
                  )
 
-connection_error = ['message']['-3']
-if connection_error:
-    print(message.json)
+sent_to = message.to
+message_body = message.body
+message_status = message.status
+price_unit = message.price_unit
+price = message.price
+message_sid = message.sid
+error_code = message.error_code
+error_message = message.error_message
+
+# print(price)
+# print(status)
+
+# {
+#   "account_sid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+#   "api_version": "2010-04-01",
+#   "body": "This is the ship that made the Kessel Run in fourteen parsecs?",
+#   "date_created": "Thu, 30 Jul 2015 20:12:31 +0000",
+#   "date_sent": "Thu, 30 Jul 2015 20:12:33 +0000",
+#   "date_updated": "Thu, 30 Jul 2015 20:12:33 +0000",
+#   "direction": "outbound-api",
+#   "error_code": null,
+#   "error_message": null,
+#   "from": "+15017122661",
+#   "messaging_service_sid": "MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+#   "num_media": "0",
+#   "num_segments": "1",
+#   "price": null,
+#   "price_unit": null,
+#   "sid": "MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+#   "status": "sent",
+#   "subresource_uris": {
+#     "media": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages/SMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Media.json"
+#   },
+#   "to": "+15558675310",
+#   "uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages/SMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json"
+# }
 
 
 

@@ -19,4 +19,19 @@ class Mail(models.Model):
 
     def __str__(self):
         return self.email_address
+
+class TwilioMesaage(models.Model):
+
+    Sent_to = models.CharField(max_length=14)
+    Message_body = models.TextField(max_length=200)
+    Message_status = models.CharField(max_length=50)
+    Price_unit = models.FloatField()
+    Price = models.FloatField()
+    Message_sid = models.CharField(max_length=100)
+    Error_code = models.IntegerField()
+    Error_message = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.sent_to
     
+  

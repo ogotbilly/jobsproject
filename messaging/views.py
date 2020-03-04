@@ -3,7 +3,7 @@ from django.contrib import messages
 from twilio.rest import Client
 from .forms import MessageForm, EmailForm
 from school.models import Pre_primary, Lower_primary, Upper_primary
-from .models import Message
+from .models import Message, TwilioMesaage
 
 
 
@@ -12,11 +12,11 @@ def message(request):
     if request.method == "POST":
         form = MessageForm(request.POST)
         if form.is_valid():
-            form.save()
+            # form.save()
             phone = form.cleaned_data.get("phone_number")
             message_data = form.cleaned_data.get("message")
 
-            #twilio API goes here
+           
             account_sid = 'AC8e1778c523a5cddecd65cea189f83231'
             auth_token = '3f24ff5b064e0f32a261b6d4efcb22eb'
 
@@ -28,8 +28,30 @@ def message(request):
                      from_='+12248033141',
                      to=phone
                  )
-           
-            #end of twilio API
+
+            sent_to = message.to
+            message_body = message.body
+            message_status = message.status
+            price_unit = message.price_unit
+            price = message.price
+            message_sid = message.sid
+            error_code = message.error_code
+            error_message = message.error_message
+
+            message_response = TwilioMesaage.create(
+                Sent_to = sent_to,
+                Message_body = message_body,
+                Message_status = message_status,
+                Price_unit = price_unit,
+                Price = price,
+                Message_sid = message_sid,
+                Error_code = error_code,
+                Error_message  =  error_message ,
+            )
+
+            message_response.save()
+
+            
 
             messages.success(request, f'message has been successfully sent to {phone}')
             return redirect("send-message")
