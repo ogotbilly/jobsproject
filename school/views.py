@@ -9,7 +9,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 import xlwt
 from django.http import HttpResponse
 from .models import Pre_primary, Lower_primary, Upper_primary
-from messaging.models import Message
+from messaging.models import Message, TwilioMesaage
 
 
 @login_required
@@ -20,14 +20,14 @@ def home(request):
 @login_required
 def dashboard(request):
     context = {
-        "message_sent": Message.objects.all()
+        "message_sent": TwilioMesaage.objects.all()
     }
     
     return render(request, 'school/dashboard.html', context)
 
 
 def delete_messages(request, message_id):
-    Message.objects.get(id=message_id).delete()
+    TwilioMesaage.objects.get(id=message_id).delete()
     messages.success(request, 'Message has been deleted successfully.')
     return redirect("dashboard")
 

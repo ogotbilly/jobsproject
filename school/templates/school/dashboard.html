@@ -136,9 +136,11 @@
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
+                      <th class="text-info"><strong>Id</strong></th>
                       <th class="text-info"><strong>Phone</strong></th>
-                      <th class="text-info"><strong>Time</strong></th>
-                      <th class="text-info"><strong>Message</strong></th>
+                      <th class="text-info"><strong>Message Body</strong></th>
+                      <th class="text-info"><strong>Status</strong></th>
+                      <th class="text-info"><strong>Price Unit</strong></th>
                       <th class="text-info"><strong>Action</strong></th>
                   
                     </thead>
@@ -146,9 +148,11 @@
                     {% for view_messages in message_sent %}
                      {% if view_messages is not None %}
                       <tr>
-                        <td>{{ view_messages.phone_number }}</td>
-                        <td>{{ view_messages.time|date:"F d, Y" }}</td>    
-                        <td>{{ view_messages.message }}</td>
+                        <td>{{ view_messages.id}}</td>
+                        <td>{{ view_messages.Sent_to}}</td>
+                        <td>{{ view_messages.Message_body}}</td>    
+                        <td>{{ view_messages.Message_status }}</td>
+                        <td>{{ view_messages.Price_unit }}</td>
                         <td><a href="{% url 'delete-message' view_messages.id %}" >
                          <i class="large material-icons">delete_sweep</i>
                         </a></td>

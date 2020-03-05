@@ -33,20 +33,19 @@ def message(request):
             message_body = message.body
             message_status = message.status
             price_unit = message.price_unit
-            price = message.price
             message_sid = message.sid
             error_code = message.error_code
             error_message = message.error_message
+            print(error_code)
+           
 
-            message_response = TwilioMesaage.create(
+
+            message_response = TwilioMesaage.objects.create(
                 Sent_to = sent_to,
                 Message_body = message_body,
                 Message_status = message_status,
                 Price_unit = price_unit,
-                Price = price,
                 Message_sid = message_sid,
-                Error_code = error_code,
-                Error_message  =  error_message ,
             )
 
             message_response.save()
