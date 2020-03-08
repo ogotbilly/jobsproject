@@ -1,0 +1,24 @@
+{% extends 'school/base.html'%}
+{% load crispy_forms_tags%}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="animated slideInDown slow-4s card container mt-5 p-4" style="width: 45rem;">
+	  <div class="card-body">
+		   <div class="row">
+			   <div class="col-md-4">
+		  <img class="rounded-circle card-img-top" src="{{ user.school.image.url }}" style="width:100px;height:100px">
+			   </div>
+		   </div>
+
+  		<fieldset class="form-group">
+  			<legend class="border-bottom mb-4 text-center text-success">School Update Form!</legend>
+			
+  			{{ s_form|crispy }}
+  		</fieldset>
+  		<div class="form-group">
+  			<button class="animated shake delay-1s btn btn-outline-info" type="submit">Update school Profile</button>
+  		</div>
+  	    </form>
+</div>
+{% endblock content%}

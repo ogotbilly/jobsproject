@@ -1,49 +1,35 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from weasyprint import HTML
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Pre_primary_performance, Lower_primary_performance, Upper_primary_performance
 from school.models import Lower_primary
 from .forms import MessageForm
 
 
-
-def lower_primary_message(request):
-
-    if request.method == "POST":
-        message_query = Lower_primary.objects.get(id=message_id)
-        form = MessageForm(request.POST, instance=request.message_query)
-        if form.is_valid():
-            form.save()
-            phone = form.cleaned_data.get("phone_number")
-            message_data = form.cleaned_data.get("message")
-
-            #twilio API goes here
-            account_sid = 'AC8e1778c523a5cddecd65cea189f83231'
-            auth_token = '3f24ff5b064e0f32a261b6d4efcb22eb'
-
-            client = Client(account_sid, auth_token)
-
-            message = client.messages \
-                .create(
-                     body=message_data,
-                     from_='+12248033141',
-                     to=phone
-                 )
-           
-            #end of twilio API
-
-            messages.success(request, f'message has been successfully sent to {phone}')
-            return redirect("send-message")
-
-           
-    else:
-        form = MessageForm()
+def lower_primary_html_to_pdf_view(request):
+    
     context = {
-        "form": form
-    }
+        'object':Lower_primary_performance.objects.all().order_by('Student_name')
+        }
+    html_string = render_to_string('performance/lower_primary_performance_detail.html', context)
 
-    return render(request, 'performance/lower_primary_message.html',context)
+    html = HTML(string=html_string)
+    html.write_pdf(target='/tmp/mypdf.pdf');
+
+    fs = FileSystemStorage('/tmp')
+    with fs.open('mypdf.pdf') as pdf:
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="mypdf.pdf"'
+        return response
+
+    return response
+
+
 
 class PrePrimaryListView(ListView):
     model = Pre_primary_performance
@@ -110,7 +96,7 @@ class LowerPrimaryCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
     def form_valid(self, form):
@@ -126,7 +112,7 @@ class LowerPrimaryUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPasses
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
     def form_valid(self, form):
@@ -160,7 +146,7 @@ class UpperPrimaryCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
     def form_valid(self, form):
@@ -176,7 +162,7 @@ class UpperPrimaryUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPasses
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
     def form_valid(self, form):

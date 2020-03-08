@@ -3,11 +3,28 @@
 {% load crispy_forms_tags %}
  {% load static %}
  {% block content%}
-<div class="animated slideInDown slow-4s card container mt-5 p-4" style="width: 45rem;">
+ <div class="animated slideInDown slow-4s container pt-4" style="width: 62rem;">
+  <div class="card" >
+    <nav class="navbar navbar-dark bg-dark">
+      {% comment %} <a href="{% url 'change-password' %}"><button class="navbar-toggler" type="button" data-toggle="tooltip" title="change password form" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-cog"></i></span>
+      </button>
+      </a> {% endcomment %}
+      <img src="{{ user.school.image.url }}" class="rounded-circle" style="width: 60px; height: 60;"/>
+    <div class="d-flex align-items-baseline">
+    {% if user.school.image.url %}
+      <h6>{{ user.school.school_name }} school</h6>
+      {% else %}
+      <h6>My school</h6>
+    {% endif %}
+    </div>
+    </nav>
+  </div>
+</div>	
+<div class="animated slideInDown slow-4s card container p-4" style="width: 60rem;">
 	<div class="text-center"><h5>New curriculum support system</h5></div>
 <form method="POST">
 {% csrf_token %}
-  <div class="text-center alert alert-warning">Admin login panel</div>
   {{ form|crispy }}
   <div class="d-flex justify-content-between">
       <button type="submit" name="signup_submit" class="animated bounceIn delay-1s btn btn-success"><i class="fa fa-users"></i> Login</button>
