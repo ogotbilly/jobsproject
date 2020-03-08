@@ -15,7 +15,6 @@ urlpatterns = [
     path('home/', school_views.home, name='home'),
     path('home/profile/', user_views.profile, name='profile'),
     path('home/dashboard/', school_views.dashboard, name='dashboard'),
-    path('home/dashboard/update-school/', school_views.update_school, name='update_school'),
     path('home/dashboard/fess-status/', school_views.fees_status, name='fees_status'),
     path('home/dashboard/<message_id>/delete', school_views.delete_messages, name="delete-message"),
     #start of pre_primary urls

@@ -96,22 +96,7 @@ class Upper_primary(models.Model):
         return reverse("upper-primary-student-details", kwargs={"pk": self.pk})
 
 
-class School(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
-    school_name = models.CharField(max_length=100)
-    image = models.ImageField(default='school.jpg', upload_to='profile_pics')
 
-    def __str__(self):
-        return f'{self.school_name} update form'
-    
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        img = Image.open(self.image.path)
-        if img.height > 300 or img.width > 300:
-            output = (300, 300)
-            img.thumbnail(output)
-            img.save(self.image.path)
 
     
 

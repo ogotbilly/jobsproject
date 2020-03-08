@@ -10,7 +10,7 @@ import xlwt
 from django.http import HttpResponse
 from .models import Pre_primary, Lower_primary, Upper_primary
 from messaging.models import Message, TwilioMesaage
-from .forms import MyschoolUpdateForm
+
 
 
 @login_required
@@ -27,25 +27,6 @@ def dashboard(request):
     return render(request, 'school/dashboard.html', context)
 
 @login_required
-def update_school(request):
-
-    if request.method == 'POST':
-       
-        s_form = MyschoolUpdateForm(request.POST, request.FILES, instance=request.user.school)
-        if s_form.is_valid():
-            s_form.save()
-           
-            messages.success(request, f'School profile has been updated successfully')
-            return redirect('dashboard')
-    else:
-        
-        s_form = MyschoolUpdateForm()
- 
-    context = {
-        's_form': s_form
-    }
-    return render(request, 'school/school_profile.html', context)
-
 
 def delete_messages(request, message_id):
     TwilioMesaage.objects.get(id=message_id).delete()
