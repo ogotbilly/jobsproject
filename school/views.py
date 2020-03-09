@@ -9,7 +9,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 import xlwt
 from django.http import HttpResponse
 from .models import Pre_primary, Lower_primary, Upper_primary
-from messaging.models import Message, TwilioMesaage
+from messaging.models import TwilioMesaage
 
 
 

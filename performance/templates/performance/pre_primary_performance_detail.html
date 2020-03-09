@@ -56,6 +56,17 @@
 				<td>{{ object.Psychomotor_and_creative_activities  }}</td>
 			</tr>
 			<tr>
+				<td><span>Total score</span></td>
+				<td>
+				{{ object.get_total_pre_primary }}/500
+				{% if object.get_total_pre_primary > 300 %}
+				 <p class="text-success">Your score is average</p>
+				 {%else%}
+				 <p class="text-danger">You fail, you need to improve</p>
+				 </td>
+				{%endif%}
+			</tr>
+			<tr>
 				<td><span>Teachers comment</span></td>
 				<td>{{ object.Teachers_comment }}</td>
 			</tr>

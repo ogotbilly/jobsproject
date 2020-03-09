@@ -52,7 +52,7 @@
                     </thead>
                     <tbody>
                     {% for view_messages in message_sent %}
-                     {% if view_messages is not None %}
+                     {% if view_messages %}
                       <tr>
                         <td>{{ view_messages.id}}</td>
                         <td>{{ view_messages.Sent_to}}</td>

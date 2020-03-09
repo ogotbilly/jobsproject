@@ -19,6 +19,15 @@ class Pre_primary_performance(models.Model):
 
     def get_absolute_url(self):
         return reverse("pre-primary-performance-details", kwargs={"pk": self.pk})
+    
+    def get_total_pre_primary(self):
+        return (
+        int(self.Language_activities)
+        + int(self.Mathematical_activities)
+        + int(self.Environmental_activities) 
+        + int(self.Psychomotor_and_creative_activities)
+        + int(self.Religious_education_activities) 
+        )
 
 
 class Lower_primary_performance(models.Model):
@@ -39,6 +48,19 @@ class Lower_primary_performance(models.Model):
 
     def get_absolute_url(self):
         return reverse("lower-primary-performance-details", kwargs={"pk": self.pk})
+    
+    def get_total(self):
+        return (
+        int(self.English_language_activities)
+        + int(self.Literacy_activities )
+        + int(self.Kiswahili_language_activities) 
+        + int(self.Mathematical_activities)
+        + int(self.Hygiene_and_nutrition_activities) 
+        + int(self.Environmental_activities) 
+        + int(self.Indigenous_language_activities) 
+        + int(self.Movement_and_creative_activities) 
+        + int(self.Religious_education_activities) 
+        )
 
 
 class Upper_primary_performance(models.Model):
@@ -60,6 +82,24 @@ class Upper_primary_performance(models.Model):
 
     def get_absolute_url(self):
         return reverse("upper-primary-performance-details", kwargs={"pk": self.pk})
+
+
+    def get_total_upper_primary(self):
+        return (
+        int(self.English)
+        + int(self.Kiswahili_or_Kenya_Sign_Language)
+        + int(self.Home_Science) 
+        + int(self.Mathematical)
+        + int(self.Agriculture) 
+        + int(self.Science_and_Technology) 
+        + int(self.Creative_Arts) 
+        + int(self.Physical_and_Health_Education) 
+        + int(self.Religious_education_activities) 
+        + int(self.Social_Studies) 
+
+        )
+    
+
 
 
 

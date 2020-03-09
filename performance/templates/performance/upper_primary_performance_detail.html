@@ -77,6 +77,17 @@
 
 			</tr>
 			<tr>
+				<td><span>Total score</span></td>
+				<td>
+				{{ object.get_total_upper_primary }}/1000
+				{% if object.get_total_upper_primary > 700 %}
+				 <p class="text-success">Your score is average</p>
+				 {%else%}
+				 <p class="text-danger">You fail, you need to improve</p>
+				 </td>
+				{%endif%}
+			</tr>
+			<tr>
 				<td><span>Teachers comment</span></td>
 				<td>{{ object.Teachers_comment }}</td>
 			</tr>

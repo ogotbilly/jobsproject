@@ -73,6 +73,17 @@
 
 			</tr>
 			<tr>
+				<td><span>Total score</span></td>
+				<td>
+				{{ object.get_total }}/900
+				{% if object.get_total > 500 %}
+				 <p class="text-success">Your score is average</p>
+				 {%else%}
+				 <p class="text-danger">You fail, you need to improve</p>
+				 </td>
+				{%endif%}
+			</tr>
+			<tr>
 				<td><span>Teachers comment</span></td>
 				<td>{{ object.Teachers_comment }}</td>
 			</tr>

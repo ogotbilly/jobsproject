@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
 from twilio.rest import Client
 from .forms import MessageForm, EmailForm
 from school.models import Pre_primary, Lower_primary, Upper_primary
-from .models import Message, TwilioMesaage
+from .models import TwilioMesaage
 
 
 
@@ -75,7 +77,11 @@ def email(request):
         if form.is_valid:
             form.save()
             mail = form.cleaned_data.get("email_address")
+            mail_subject = form.cleaned_data.get("email_subject")
             email_message_data = form.cleaned_data.get("message")
+            from_mail = settings.EMAIL_HOST_USER
+            to_list = [mail]
+            send_mail( mail_subject, email_message_data, from_mail, to_list, fail_silently=True)
 
             messages.success(request, f'Email has been successfully sent to {mail}')
             return redirect("send-email")

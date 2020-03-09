@@ -8,7 +8,6 @@ from weasyprint import HTML
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Pre_primary_performance, Lower_primary_performance, Upper_primary_performance
 from school.models import Lower_primary
-from .forms import MessageForm
 
 
 def lower_primary_html_to_pdf_view(request):
