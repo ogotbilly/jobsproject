@@ -1,0 +1,78 @@
+
+ {% extends 'school/base.html'%}
+ {% load static %}
+ {% block content %}
+		<table class="card-body">
+		<h5 class="text-center p-3">{{ lower_primary.Student_name }}, performance</h5>
+
+        <table class="table text-center">
+			<thead class="thead-dark">
+			<tr>
+				<th>subjects</th>
+			    <th>scores per activity</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><span>Student Name</span></td>
+				<td>{{ lower_primary.Student_name }}</td>
+			</tr>
+			<tr>
+				<td><span>English language activities</span></td>
+				<td>{{ lower_primary.English_language_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Kiswahili language activities</span></td>
+				<td>{{ lower_primary.Kiswahili_language_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Mathematical Activities</span></td>
+				<td>{{ lower_primary.Mathematical_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Environmental Activities</span></td>
+				<td>{{ lower_primary.Environmental_activities }}</td>
+			</tr>
+			<tr>
+				<td><span> Literacy Activities</span></td>
+				<td>{{ lower_primary.Literacy_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Indigenous language activities</span></td>
+				<td>{{ lower_primary.Indigenous_language_activities  }}</td>
+			</tr>
+			<tr>
+				<td><span>Hygiene and nutrition activities</span></td>
+				<td>{{ lower_primary.Hygiene_and_nutrition_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Religious education activities </span></td>
+				<td>{{ lower_primary.Religious_education_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Movement and creative activities</span></td>
+				<td>{{ lower_primary.Movement_and_creative_activities }}</td>
+
+			</tr>
+			<tr>
+				<td><span>Total score</span></td>
+				<td>
+				{{ lower_primary.get_total }}/900
+				{% if lower_primary.get_total > 500 %}
+				 <p class="text-success">Your score is average</p>
+				 {%else%}
+				 <p class="text-danger">You fail, you need to improve</p>
+				 </td>
+				{%endif%}
+			</tr>
+			<tr>
+				<td><span>Teachers comment</span></td>
+				<td>{{ lower_primary.Teachers_comment }}</td>
+			</tr>
+			</tbody>
+		</table>
+{% endblock content%}
+
+
+
+

@@ -95,7 +95,7 @@
 		</table>
 		<div class="d-flex justify-content-between">
 		<a href="{% url 'upper-primary-performance' %}" class="pl-2" data-toggle="tooltip" title="navigate backwards"><i class="fas fa-backward"></i> Back</a>
-	    <a href="" data-toggle="tooltip" class="pr-2" title="print the document">Print <i class="fas fa-print"></i></a>
+	    <a href="{% url 'upper-primary-performance-print' object.pk %}" data-toggle="tooltip" class="pr-2" title="print the document">Print <i class="fas fa-print"></i></a>
 		</div>
 
 		<div class="card-footer">

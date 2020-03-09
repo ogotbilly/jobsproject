@@ -1,0 +1,48 @@
+<table class="card-body">
+		<h5 class="text-center p-3 text-secondary">{{ pre_primary.Student_name }}, performance</h5>
+
+        <table class="table text-center">
+			<thead class="thead-dark">
+			<tr>
+				<th>subjects</th>
+			    <th>scores per activity</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><span>Student Name</span></td>
+				<td>{{ pre_primary.Student_name }}</td>
+			</tr>
+			<tr>
+				<td><span>Language Activities</span></td>
+				<td>{{ pre_primary.Language_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Mathematical Activities</span></td>
+				<td>{{pre_primary.Mathematical_activities}}</td>
+			</tr>
+			<tr>
+				<td><span>Religious Education Activities</span></td>
+				<td>{{ pre_primary.Religious_education_activities  }}</td>
+			</tr>
+			<tr>
+				<td><span> Environmental activities</span></td>
+				<td>{{ pre_primary.Environmental_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Psychomotor and creative activities  </span></td>
+				<td>{{ pre_primary.Psychomotor_and_creative_activities  }}</td>
+			</tr>
+			<tr>
+				<td><span>Total score</span></td>
+				<td>
+				{{ pre_primary.get_total_pre_primary }}/500
+				{% if pre_primary.get_total_pre_primary > 300 %}
+				 <p class="text-success">Your score is average</p>
+				 {%else%}
+				 <p class="text-danger">You fail, you need to improve</p>
+				 </td>
+				{%endif%}
+			</tr>
+			</tbody>
+		</table>

@@ -91,7 +91,7 @@
 		</table>
 		<div class="d-flex justify-content-between">
 		<a href="{% url 'lower-primary-performance' %}" class="pl-2" data-toggle="tooltip" title="navigate backwards"><i class="fas fa-backward"></i> Back</a>
-	    <a href="{% url 'lower-primary-performance-print' %}" data-toggle="tooltip" class="pr-2" title="print the document">Print <i class="fas fa-print"></i></a>
+	    <a href="{% url 'lower-primary-performance-print' object.pk %}" data-toggle="tooltip" class="pr-2" title="print the document">Print <i class="fas fa-print"></i></a>
 		</div>
 		<div class="card-footer">
 			<p class="text-center text-muted">&copy;Copyright new education support system 2019-2020. All Rights observed!</p>

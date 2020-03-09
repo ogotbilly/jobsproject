@@ -10,24 +10,59 @@ from .models import Pre_primary_performance, Lower_primary_performance, Upper_pr
 from school.models import Lower_primary
 
 
-def lower_primary_html_to_pdf_view(request):
+def lower_primary_html_to_pdf_view(request, pk):
     
     context = {
-        'object':Lower_primary_performance.objects.all().order_by('Student_name')
+        'lower_primary':Lower_primary_performance.objects.all()
         }
-    html_string = render_to_string('performance/lower_primary_performance_detail.html', context)
+    html_string = render_to_string('performance/lower_primary_performance_render_to_pdf.html', context)
 
     html = HTML(string=html_string)
-    html.write_pdf(target='/tmp/mypdf.pdf');
+    html.write_pdf(target='/tmp/student_performance.pdf');
 
     fs = FileSystemStorage('/tmp')
-    with fs.open('mypdf.pdf') as pdf:
+    with fs.open('student_performance.pdf') as pdf:
         response = HttpResponse(pdf, content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="mypdf.pdf"'
+        response['Content-Disposition'] = 'attachment; filename="student_performance.pdf"'
         return response
 
     return response
 
+def pre_primary_html_to_pdf_view(request, pk):
+    
+    context = {
+        'pre_primary':Pre_primary_performance.objects.all()
+        }
+    html_string = render_to_string('performance/pre_primary_performance_render_to_pdf.html', context)
+
+    html = HTML(string=html_string)
+    html.write_pdf(target='/tmp/student_performance.pdf');
+
+    fs = FileSystemStorage('/tmp')
+    with fs.open('student_performance.pdf') as pdf:
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="student_performance.pdf"'
+        return response
+
+    return response
+
+def upper_primary_html_to_pdf_view(request, pk):
+    
+    context = {
+        'upper_primary':Pre_primary_performance.objects.all()
+        }
+    html_string = render_to_string('performance/upper_primary_performance_render_to_pdf.html', context)
+
+    html = HTML(string=html_string)
+    html.write_pdf(target='/tmp/student_performance.pdf');
+
+    fs = FileSystemStorage('/tmp')
+    with fs.open('student_performance.pdf') as pdf:
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="student_performance.pdf"'
+        return response
+
+    return response
 
 
 class PrePrimaryListView(ListView):
@@ -44,7 +79,7 @@ class PrePrimaryCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
 
@@ -61,7 +96,7 @@ class PrePrimaryUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTe
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
     def form_valid(self, form):

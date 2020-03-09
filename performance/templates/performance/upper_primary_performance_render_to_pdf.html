@@ -1,0 +1,68 @@
+<h5 class="text-center p-3">{{ upper_primary.Student_name }}, performance</h5>
+
+        <table class="table text-center">
+			<thead class="thead-dark">
+			<tr>
+				<th>subjects</th>
+			    <th>scores per subject</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><span>Student Name</span></td>
+				<td>{{ upper_primary.Student_name }}</td>
+			</tr>
+			<tr>
+				<td><span>Kiswahili or kenya sign language</span></td>
+				<td>{{ upper_primary.Kiswahili_or_Kenya_Sign_Language }}</td>
+			</tr>
+			<tr>
+				<td><span>Home Science</span></td>
+				<td>{{ upper_primary.Home_Science }}</td>
+			</tr>
+			<tr>
+				<td><span>English</span></td>
+				<td>{{ upper_primary.English }}</td>
+			</tr>
+			<tr>
+				<td><span>Mathematical</span></td>
+				<td>{{ upper_primary.Mathematical }}</td>
+			</tr>
+			<tr>
+				<td><span>Agriculture</span></td>
+				<td>{{ upper_primary.Agriculture }}</td>
+			</tr>
+			<tr>
+				<td><span> Science and Technology</span></td>
+				<td>{{ upper_primary.Science_and_Technology }}</td>
+			</tr>
+			<tr>
+				<td><span>Creative Arts</span></td>
+				<td>{{ upper_primary.Creative_Arts }}</td>
+			</tr>
+			<tr>
+				<td><span>Physical and Health Education</span></td>
+				<td>{{ upper_primary.Physical_and_Health_Education }}</td>
+			</tr>
+			<tr>
+				<td><span>Religious education activities </span></td>
+				<td>{{ upper_primary.Religious_education_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Social Studies</span></td>
+				<td>{{ upper_primary.Social_Studies }}</td>
+
+			</tr>
+			<tr>
+				<td><span>Total score</span></td>
+				<td>
+				{{ upper_primary.get_total_upper_primary }}/1000
+				{% if upper_primary.get_total_upper_primary > 700 %}
+				 <p class="text-success">Your score is average</p>
+				 {%else%}
+				 <p class="text-danger">You fail, you need to improve</p>
+				 </td>
+				{%endif%}
+			</tr>
+			</tbody>
+		</table>
