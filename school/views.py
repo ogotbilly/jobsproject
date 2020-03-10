@@ -94,7 +94,7 @@ class StudentsUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTest
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
     
 
@@ -117,7 +117,7 @@ class StudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTest
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
 
@@ -149,7 +149,7 @@ class LowerPrimaryStudentsCreateView(SuccessMessageMixin, LoginRequiredMixin, Cr
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
     def form_valid(self, form):
@@ -187,7 +187,7 @@ class LowerPrimaryStudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, Us
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
     def test_func(self):
@@ -256,7 +256,7 @@ class UpperPrimaryStudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, Us
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            student_name=self.object.student_name,
+            student_name=self.object.Student_name,
         )
 
     def test_func(self):

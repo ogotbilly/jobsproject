@@ -4,8 +4,8 @@
  {% block content %}
 <div class="container pt-4">
 	<div class="card">
-		<div class="card-header">
-		<div class="navbar">
+		
+		<div class="mb-1 navbar navbar-light teal accent-1">
 			<div class="tooltip bs-tooltip-top" role="tooltip">
 			</div>
 			<div><a href="{% url 'home' %}" data-toggle="tooltip" title="home menu" class="card-link"><i class="fas fa-home"></i> Home</a></div>
@@ -14,7 +14,7 @@
 			<div><a href="#" data-toggle="tooltip" title="fees status" class="card-link"><i class="fas fa-coins"></i> Fee status</a></div>
 
 		</div>
-		</div>
+		
 		<div class="card-body">
 		{% if messages %}
 			{% for message in messages %}

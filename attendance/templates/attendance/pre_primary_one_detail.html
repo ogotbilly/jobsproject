@@ -18,17 +18,36 @@
 				{{ message }}
 				</div>
 			{% endfor %}
-		{% endif %}
-        <form method="POST" action = "", class="m-3">
-		{% csrf_token %}
-        
-        {{ form|crispy }}
-				<button type="submit" class="btn btn-secondary m-3">Send Mail</button>
-        </form>
-			
+		{% endif %}	
 		</div>
-
-
+        <div><p class="ml-3">Date: <span class="badge badge-dark">{{ today }}</span></p></div>
+		<form method="POST">
+		{% csrf_token %}
+		<table class="table table-bordered">
+		<thead>
+			<tr>
+			<th scope="col">Student name</th>
+			<th scope="col">Days</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			<td>
+			<div class="text-secondary"><strong>{{ pre_primary_students.student_class }}</strong></div>
+			    <br/>
+				<p class="alert alert-info text-center">Attendance analysis</p>
+			    <div class="progress">
+				 <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+				</div>
+			</td>
+			<td>
+			{{form|crispy }}
+			<button type="submit" class="btn btn-info"><i class="fas fa-caret-right"></i> Next day</button>
+			</td>
+			</tr>
+		</tbody>
+		</form>
+		</table>
 		<br>
 		<div class="card-footer">
 			<p class="text-center text-muted">&copy;Copyright new education support system 2019-2020. All Rights observed!</p>
@@ -43,6 +62,7 @@
     }, 3000)
 </script>
 {% endblock content%}
+
 
 
 
