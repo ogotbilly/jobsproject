@@ -9,12 +9,18 @@ $("#signin").on("click", function() {
 
 //accordian script
 const accordian = document.querySelector(".accordian");
-const item = accordian.querySelectorAll(".li");
+const item = accordian.querySelectorAll("li");
 const questions = accordian.querySelectorAll(".question");
 
 function toggleAccordian() {
   const thiseItem = this.parentNode;
-  thiseItem.classList.toggle("open");
+  item.forEach(items => {
+    if (thiseItem == items) {
+      thiseItem.classList.toggle("open");
+      return;
+    }
+    items.classList.remove("open");
+  });
 }
 
 questions.forEach(question =>

@@ -12,16 +12,19 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/datatables.css' %}">
   <link rel="stylesheet" href= "{% static 'css/animate.css' %}"/> 
   <link rel="stylesheet" type="text/css" href="{% static 'css/mdb.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>-->
-
-
-
-  </head>
+</head>
 <body>
+
+  <!--Main Navigation-->
  {% block content %}{% endblock content%}
-</body>
+
+
+ <!--Footer-->
+  
    <script src="{% static 'js/jquery1.min.js' %}"></script>
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>-->
    <script src="{% static 'js/popper.min.js' %}"></script>
@@ -31,9 +34,10 @@
    <script src="{% static 'js/bootstrap.min.js' %}"></script>
    <script src="{% static 'js/mdb.min.js'%}"></script>
    <script src="{% static 'js/custom.js' %}"></script>
-  
 
-<script>
+
+
+   <script>
 
 	$(document).ready( function ()
 	 {

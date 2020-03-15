@@ -26,18 +26,18 @@
 		<table class="table table-bordered">
 		<thead>
 			<tr>
-			<th scope="col">Student name</th>
-			<th scope="col">Days</th>
+			<th scope="col" class="text-secondary">Student name</th>
+			<th scope="col" class="text-secondary">Days of the week</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 			<td>
-			<div class="text-secondary"><strong>{{ pre_primary_students.student_class }}</strong></div>
+			<div class="text-light"><strong>{{ get_id.student_class }}</strong></div>
 			    <br/>
 				<p class="alert alert-info text-center">Attendance analysis</p>
-			    <div class="progress">
-				 <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+			    <div class="progress md-progress" style="height: 20px">
+                <div class="progress-bar" role="progressbar" style="width: 25%; height: 20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
 				</div>
 			</td>
 			<td>

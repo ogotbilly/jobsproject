@@ -1,57 +1,92 @@
-{% extends 'school/base_dashboard.html' %}
+{% extends 'school/new_base.html' %}
 {% block content %}
 {% load static %}      <!-- End Navbar -->
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-            {% comment %} including flash message tags {% endcomment %}
-             {% include "school/messages.html" %}
-    
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Teacher dashboard profile information</h4>
-                  <p class="card-category">New education curriculum support system for tracking students progress</p>
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-hover">
-                    <thead class="text-warning">
-                      <th class="text-primary"><strong>Teacher information</strong></th>
-                      <th></th>
+      <body class="grey lighten-2">
 
-                    </thead>
-                    <tbody>
-                            <tr>
-                            <td><a class="text-secondary" href=""><i class="material-icons">person</i> Teacher username</a></td>
+  <!--Main Navigation-->
+  
+  <!--Main layout-->
+  <main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+      
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-12 mb-4">
+
+          <!--Card-->
+           <div class="text-center">
+              <p  class="text-default"><strong>Administrator Logs</strong></p>
+              </div>
+          <div class="card">
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+             
+              <table class="table table-hover">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th class="text-info"><strong>Teacher information</strong></th>
+                      <th></th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                   <tr>
+                            <td><a class="text-secondary" href=""><i class="fas fa-user mr-2"></i><strong>Teacher username</strong></a></td>
                             <td>{{ user.username }}</td>
                             </tr>
                             <tr>
-                            <td><a class="text-secondary" href=""><i class="material-icons"><strong>mail</strong></i> Email address</a></td>
+                            <td><a class="text-secondary" href=""><i class="fas fa-envelope-open mr-2"></i><strong>Email address</strong></a></td>
                             <td>{{ user.email }}</td>
                             </tr>
-                    </tbody>
-                  </table>
-                </div>
-                
-              </div>
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
             </div>
-             <div class="card blue-grey darken-1">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Messages Console</h4>
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-hover">
-                    <thead class="text-warning">
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+        
+
+       
+         <!--Grid column-->
+        <div class="col-md-12 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-hover">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
                       <th class="text-info"><strong>Id</strong></th>
                       <th class="text-info"><strong>Phone</strong></th>
                       <th class="text-info"><strong>Message Body</strong></th>
                       <th class="text-info"><strong>Status</strong></th>
-                      <th class="text-info"><strong>Price Unit</strong></th>
+                      <th class="text-info"><strong>Price</strong></th>
                       <th class="text-info"><strong>Action</strong></th>
-                  
-                    </thead>
-                    <tbody>
-                    {% for view_messages in message_sent %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for view_messages in message_sent %}
                      {% if view_messages %}
                       <tr>
                         <td>{{ view_messages.id}}</td>
@@ -59,7 +94,7 @@
                         <td>{{ view_messages.Message_body}}</td>    
                         <td>{{ view_messages.Message_status }}</td>
                         <td>{{ view_messages.Price_unit }}</td>
-                        <td><a href="{% url 'delete-message' view_messages.id %}" >
+                        <td><a href="{% url 'delete-message' view_messages.id %}" data-toggle="tooltip" title="delete message">
                          <i class="large material-icons">delete_sweep</i>
                         </a></td>
                       </tr>
@@ -67,12 +102,18 @@
                       <div class="alert alert-info">There is no messages to display!</div>
                       {% endif %}
                     {% endfor %}
-                    </tbody>
-                  </table>
-                </div>
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+            </div>
+          </div>
+          <!--/.Card-->
 
-            </div>
-            </div>
+        </div>
+        <!--Grid column-->
+    </div>
+  </main>
 {% endblock %}
             
 

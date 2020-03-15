@@ -11,7 +11,7 @@ class PrePrimaryOneAttendanceForm(forms.ModelForm):
                                       
                                     
     class Meta:
-        model = Lower_primary_attendance
+        model = Pre_primary_1_attendance
         fields = ['Monday', 'Tuesday', 'Wednessday', 'Thursday', 'Friday']
 
 class LowerPrimaryOneAttendanceForm(forms.ModelForm):

@@ -1,0 +1,211 @@
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="{% static 'images/new_logo.png'%}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>new curriculum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href= "{% static 'css/bootstrap.min.css' %}"/>
+<!--  <link rel="stylesheet" type="text/css" href="{% static 'css/dataTables.bootstrap4.min.css' %}">-->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/datatables.css' %}">
+  <link rel="stylesheet" href= "{% static 'css/animate.css' %}"/> 
+  <link rel="stylesheet" type="text/css" href="{% static 'css/mdb.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>-->
+ <style>
+
+    .map-container{
+overflow:hidden;
+padding-bottom:56.25%;
+position:relative;
+height:0;
+}
+.map-container iframe{
+left:0;
+top:0;
+height:100%;
+width:100%;
+position:absolute;
+}
+</style>
+
+</head>
+<body>
+<header>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light default-color scrolling-navbar">
+      <div class="container-fluid">
+
+       
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'home' %}" data-toggle="tooltip" title="main menu"><i class="fas fa-home"></i> Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href=""
+                target="_blank">
+                Students
+                </a>
+            </li>
+          </ul>
+
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a href="{% url 'change-password' %}" class="nav-link waves-effect" type="button" data-toggle="tooltip" title="change your password">
+               <i class="fas fa-cog"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'logout' %}" class="nav-link border border-light rounded waves-effect"
+                >
+                
+                <i class="fas fa-sign-out-alt mr-2"></i>LogOut
+              </a>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Sidebar -->
+    <div class="sidebar-fixed position-fixed">
+
+      <a class="logo-wrapper waves-effect">
+        <img src="{{ user.profile.image.url }}" class="rounded-circle view view-cascade overlay zoom hoverable" type="button" data-toggle="tooltip" title="admin profile image" style='width: 80px; height: 80px;'>
+      </a>
+
+      <div class="list-group list-group-flush">
+        <a href="{% url 'dashboard' %}" class="list-group-item blue lighten-4">
+          <i class="fas fa-chart-pie mr-3"></i>Admin Dashboard
+        </a>
+        <a href="{% url 'send-email' %}" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-envelope-open-text mr-3"></i>Email console</a>
+              <a class="list-group-item list-group-item-action waves-effect blue lighten-4" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"><i class="fas fa-chart-bar mr-3"></i>
+                <span class="menu-title">Attendance</span>
+                <i class="fas fa-chevron-down ml-2"></i>
+              </a>
+              <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link default-color" href="{% url 'pre-primary-1' %}">Pre-primary one</a></li>
+                  <li class="nav-item"> <a class="nav-link default-color" href="{% url 'pre-primary-2' %}">Pre-primary two</a></li>
+                  <li class="nav-item"> <a class="nav-link default-color" href="{% url 'grade-1' %}">Class one </a></li>
+                  <li class="nav-item"> <a class="nav-link default-color" href="{% url 'grade-2' %}">Class two</a></li>
+                  <li class="nav-item"> <a class="nav-link default-color" href="{% url 'grade-3' %}">Class three </a></li>
+                  <li class="nav-item"> <a class="nav-link default-color" href="{% url 'grade-4' %}">Class four</a></li>
+                  <li class="nav-item"> <a class="nav-link default-color" href="{% url 'grade-5' %}">Class five</a></li>
+                  <li class="nav-item"> <a class="nav-link default-color" href="{% url 'grade-6' %}">Class six</a></li>
+
+                </ul>
+              </div>
+          <a href="{% url 'register' %}" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-table mr-3"></i>Register admin</a>
+          <a href="{% url 'profile' %}" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-map mr-3"></i>Admin profile</a>  
+
+          <a href="{% url 'logout' %}" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-sign-out-alt mr-3"></i>logout</a>  
+            
+      </div>
+
+    </div>
+    <!-- Sidebar -->
+
+  </header>
+  <!--Main Navigation-->
+ {% block content %}{% endblock content%}
+
+
+ <!--Footer-->
+  <footer class="page-footer text-center font-small default-color-dark darken-2 mt-4 wow fadeIn">
+
+    <!--Call to action-->
+    <div class="pt-4">
+      <a class="btn btn-outline-white" href="" 
+        role="button">Download
+        MDB
+        <i class="fas fa-download ml-2"></i>
+      </a>
+      <a class="btn btn-outline-white" href="" role="button">Start
+        free tutorial
+        <i class="fas fa-graduation-cap ml-2"></i>
+      </a>
+    </div>
+    <!--/.Call to action-->
+
+    <hr class="my-2">
+
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      <p class="text-center text-muted">&copy;Copyright: 2019-2020 New Education Support System. All Rights observed!</p>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+
+
+   <script src="{% static 'js/jquery1.min.js' %}"></script>
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>-->
+   <script src="{% static 'js/popper.min.js' %}"></script>
+   <script src="{% static 'js/all.js' %}"></script>
+   <script src="{% static 'js/datatables.min.js' %}"></script>
+   <script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'js/mdb.min.js'%}"></script>
+   <script src="{% static 'js/custom.js' %}"></script>
+
+
+
+   <script>
+
+	$(document).ready( function ()
+	 {
+    $('#myTable').DataTable();
+     } );
+
+    $(function ()
+	{
+	$('[data-toggle="tooltip"]').tooltip()
+	})
+</script>
+<script>
+    setTimeout(function(){
+    if ($("#changepasswordmessage").length > 0 ){
+     $("#changepasswordmessapipge").remove();
+    }
+    }, 3000)
+</script>
+<script>
+    setTimeout(function(){
+    if ($("#preprimarydetail").length > 0 ){
+     $("#preprimarydetail").remove();
+    }
+    }, 3000)
+</script>
+
+</body>
+</html>

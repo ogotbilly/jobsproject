@@ -17,8 +17,7 @@ def pre_primary_1_detail(request, id):
 
     today = datetime.now().strftime("%B %d, %Y")
     get_id = get_object_or_404(Pre_primary_1_attendance, pk=id)
-    pre_primary_students = get_id.student_class.objects.all()
-
+    
     if request.method == 'POST':
         form = PrePrimaryOneAttendanceForm(request.POST)
     else:
@@ -27,7 +26,6 @@ def pre_primary_1_detail(request, id):
     context = {
         "get_id": get_id,
         "today": today,
-        "pre_primary_students": pre_primary_students, 
         "form": form
     }
 
@@ -45,13 +43,15 @@ def pre_primary_2(request):
 def pre_primary_2_detail(request, id):
 
     today = datetime.now().strftime("%B %d, %Y")
+    get_id = get_object_or_404(Pre_primary_1_attendance, pk=id)
+
     if request.method == 'POST':
         form = PrePrimaryOneAttendanceForm(request.POST)
     else:
         form = PrePrimaryOneAttendanceForm()
 
     context = {
-        "students": Pre_primary_1_attendance.objects.all(),
+        "get_id": get_id,
         "today": today, 
         "form": form
     }
@@ -71,13 +71,15 @@ def grade_1(request):
 def grade_one_detail(request, id):
 
     today = datetime.now().strftime("%B %d, %Y")
+    get_id = get_object_or_404(Pre_primary_1_attendance, pk=id)
+
     if request.method == 'POST':
         form = LowerPrimaryOneAttendanceForm(request.POST)
     else:
         form = LowerPrimaryOneAttendanceForm()
 
     context = {
-        "students": Lower_primary_attendance.objects.all(),
+        "get_id": get_id,
         "today": today, 
         "form": form
     }
@@ -97,13 +99,15 @@ def grade_2(request):
 def grade_two_detail(request, id):
 
     today = datetime.now().strftime("%B %d, %Y")
+    get_id = get_object_or_404(Pre_primary_1_attendance, pk=id)
+
     if request.method == 'POST':
         form = LowerPrimaryOneAttendanceForm(request.POST)
     else:
         form = LowerPrimaryOneAttendanceForm()
 
     context = {
-        "students": Lower_primary_attendance.objects.all(),
+        "get_id": get_id,
         "today": today, 
         "form": form
     }
@@ -124,13 +128,15 @@ def grade_3(request):
 def grade_three_detail(request, id):
 
     today = datetime.now().strftime("%B %d, %Y")
+    get_id = get_object_or_404(Pre_primary_1_attendance, pk=id)
+
     if request.method == 'POST':
         form = LowerPrimaryOneAttendanceForm(request.POST)
     else:
         form = LowerPrimaryOneAttendanceForm()
 
     context = {
-        "students": Lower_primary_attendance.objects.all(),
+        "get_id": get_id,
         "today": today, 
         "form": form
     }
@@ -147,13 +153,15 @@ def grade_4(request):
 def grade_four_detail(request, id):
 
     today = datetime.now().strftime("%B %d, %Y")
+    get_id = get_object_or_404(Pre_primary_1_attendance, pk=id)
+
     if request.method == 'POST':
         form = UpperPrimaryOneAttendanceForm(request.POST)
     else:
         form = UpperPrimaryOneAttendanceForm()
 
     context = {
-        "students": Upper_primary_attendance.objects.all(),
+        "get_id": get_id,
         "today": today, 
         "form": form
     }
@@ -170,13 +178,15 @@ def grade_5(request):
 def grade_five_detail(request, id):
 
     today = datetime.now().strftime("%B %d, %Y")
+    get_id = get_object_or_404(Pre_primary_1_attendance, pk=id)
+
     if request.method == 'POST':
         form = UpperPrimaryOneAttendanceForm(request.POST)
     else:
         form = UpperPrimaryOneAttendanceForm()
 
     context = {
-        "students": Upper_primary_attendance.objects.all(),
+        "get_id": get_id,
         "today": today, 
         "form": form
     }
@@ -193,13 +203,15 @@ def grade_6(request):
 def grade_six_detail(request, id):
 
     today = datetime.now().strftime("%B %d, %Y")
+    get_id = get_object_or_404(Pre_primary_1_attendance, pk=id)
+
     if request.method == 'POST':
         form = UpperPrimaryOneAttendanceForm(request.POST)
     else:
         form = UpperPrimaryOneAttendanceForm()
 
     context = {
-        "students": Upper_primary_attendance.objects.all(),
+        "get_id": get_id,
         "today": today, 
         "form": form
     }

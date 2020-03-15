@@ -1,11 +1,10 @@
-
-
-
-html{
-    overflow-y: scroll;
-}body {
+html {
+  overflow-y: scroll;
+}
+body {
   margin: 0;
   padding: 0;
+  background: #FFF;
 }
 .container h6 {
   text-transform: capitalize;
@@ -17,9 +16,6 @@ html{
   color: rgba(0, 0, 0, 0.5);
 }
 
-.card-header {
-  background-color: rgba(60, 179, 113, 0.4);
-}
 .navbar a {
   color: rgba(0, 0, 0, 0.7);
   font-weight: bold;
@@ -27,61 +23,59 @@ html{
 .navbar a:hover {
   color: rgba(0, 128, 128, 0.4);
 }
-.dropdown:hover > .dropdown-menu {
+/* .dropdown:hover > .dropdown-menu {
   display: block;
-}
+} */
 
-.dropdown > .dropdown-toggle:active {
+/* .dropdown > .dropdown-toggle:active {
   /*Without this, clicking will make it sticky*/
-  pointer-events: none;
-}
-
-.accordian{
-    background: #FFF;
-    border-radius: 5px;
-    padding: 30px;
+/* pointer-events: none; */
+/* } */
+*/ .accordian {
+  background: #fff;
+  border-radius: 5px;
+  padding: 30px;
 }
 ul {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
-.question{
-    border-top: 1px solid #FFF;
-    padding: 20px;
-    cursor: pointer;
-    position: relative;
-
+.question {
+  border-top: 1px solid #EEE;
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
 }
-.question a{
-    font-size: 15px;
-    margin: 0;
-    text-decoration: none;
-    color: #c00c00;
+.question h2 a {
+  font-size: 15px;
+  margin: 0;
+  text-decoration: none;
+  color: #c00c00;
 }
-.question a:hover{
-    color: grey;
+.question a:hover {
+  color: grey;
 }
-.question .icon{
-   position: absolute;
-   right: 20px;
-   cursor: pointer;
-   top: 0;
-   color: #c00c00;
-   height: 100px;
-   display: flex;
-   align-items: center;
-   transition: 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+.question .icon {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  top: 0;
+  color: #c00c00;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
-.answer{
-    max-height: 0;
-    overflow: hidden;
-    transition: 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
-.answer p{
-    padding: 10px;
+.answer p {
+  padding: 10px;
 }
-. accordian li.open .question .icon{
-    transform: rotate(180deg);
+.accordian li.open .question .icon {
+  transform: rotate(180deg);
 }
-.accordian li.open .answer{
-max-height: 80px;
+.accordian li.open .answer {
+  max-height: 80px;
 }
