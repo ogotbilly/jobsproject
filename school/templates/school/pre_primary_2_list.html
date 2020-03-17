@@ -1,0 +1,68 @@
+
+ {% extends 'school/base.html'%}
+ {% load static %}
+ {% block content %}
+<div class="container pt-4">
+	<div class="card">
+		
+		<div class="mb-1 navbar navbar-light teal accent-1">
+			<div class="tooltip bs-tooltip-top" role="tooltip">
+			</div>
+			<div><a href="{% url 'home' %}" data-toggle="tooltip" title="home menu" class="card-link"><i class="fas fa-home"></i> Home</a></div>
+			<div><a href="{% url 'pri-primary-two-create' %}" data-toggle="tooltip" title="register new student" class="card-link"><i class="fas fa-plus"></i> Register new student</a></div>
+		</div>
+		<div class="card-body">
+		{% if messages %}
+			{% for message in messages %}
+				<div class="text-center alert alert-{{ message.tags }}" id="preprimarylistmessage">
+					{{ message|safe }}
+				</div>
+			{% endfor %}
+        {% endif %}
+	    <div class="d-flex justify-content-between">
+	    <a href="{% url 'pre-primary-export-excel' %}" class="card-link"><i class="fas fa-download"></i></i> export to excel</a>
+			<p>Number of students <span class="badge badge-secondary">{{ students.count }}</span></p>
+		</div>
+		<h5 class="text-center">Lists of all registared students and their details</h5>
+		<table class="table" id="myTable">
+		<thead class="thead-light">
+		<tr>
+	    <th>Id</th>
+		<th>Student Name</th>
+		<th>Reg Number</th>
+		<th>Gender</th>
+		<th>View Details</th>
+		<th>Update/Edit</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for student in students %}
+		<tr>
+		<td>{{ student.id }}</td>
+		<td>{{ student.student_name }}</td>
+		<td> {{ student.registration_number }}</td>
+		<td> {{ student.student_gender }}</td>
+		<td><a href="{% url 'pri-primary-two-details' student.id %}" data-toggle="tooltip" title="view student details" class="card-link btn btn-success"><i class="fas fa-calendar-day"></i> Details</a></td>
+		<td><a href="{% url 'pri-primary-two-update' student.id %}" data-toggle="tooltip" title="update student" class="card-link btn btn-warning"><i class="fas fa-edit"></i> Update</a></td>
+		</tr>
+		{% endfor %}
+		</tbody>
+        </table>
+		</div>
+		<div class="card-footer">
+			<p class="text-center text-muted">&copy;Copyright new education support system 2019-2020. All Rights observed!</p>
+		</div>
+	</div>
+</div>
+<script>
+    setTimeout(function(){
+    if ($("preprimarylistmessage").length > 0 ){
+     $("#preprimarylistmessage").remove();
+    }
+    }, 3000)
+</script>
+{% endblock content%}
+
+
+
+

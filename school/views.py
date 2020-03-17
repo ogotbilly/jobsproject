@@ -8,8 +8,18 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 import xlwt
 from django.http import HttpResponse
-from .models import Pre_primary, Lower_primary, Upper_primary
 from messaging.models import TwilioMesaage
+from .models import (
+                    Pre_primary, 
+                    Lower_primary,
+                    Upper_primary,
+                    Pre_primary_2, 
+                    Lower_primary_grade_2, 
+                    Lower_primary_grade_3,
+                    Upper_primary_grade_5, 
+                    Upper_primary_grade_6
+)
+
 
 
 
@@ -55,7 +65,7 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'school/change_password.html', {"form": form})
 
-# class based views for pre primary
+# class based views for pre primary_one
 
 
 class StudentsListView(ListView):
@@ -127,7 +137,77 @@ class StudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTest
             return True
         return False
 
-# class based views for lower primary
+# class based views for lower primary_two students
+
+class StudentsListPrePrimaryTwoView(ListView):
+    model = Pre_primary_2
+    context_object_name = 'students'
+   
+
+
+class StudentsPrePrimaryTwoDetailView(DetailView):
+    model = Pre_primary_2
+
+
+class StudentsPrePrimaryTwoCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
+    model = Pre_primary_2
+    fields = '__all__'
+    success_url = '/home/pri-primary-two-list/'
+    success_message = "%(student_name)s has been registared successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+
+class StudentsPrePrimaryTwoUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Pre_primary_2
+    fields = '__all__'
+    success_message = "%(student_name)s has been updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+    
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
+class StudentsPrePrimaryTwoDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Pre_primary_2
+    success_url = '/home/pri-primary-two-list/'
+    success_message = "%(student_name)s results has been deleted successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+# class based views for lower primary_2 students
 
 
 class LowerPrimaryStudentsListView(ListView):
@@ -197,6 +277,143 @@ class LowerPrimaryStudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, Us
         return False
 
 
+# class based views for lower primary grade two
+
+class LowerPrimaryGradeTwoStudentsListView(ListView):
+    model = Lower_primary_grade_2
+    context_object_name = 'students'
+
+
+class LowerPrimaryGradeTwoStudentsDetailView(DetailView):
+    model = Lower_primary_grade_2
+
+
+class LowerPrimaryGradeTwoStudentsCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
+    model = Lower_primary_grade_2
+    fields = '__all__'
+    success_url = '/home/lower-primary-grade-two-list/'
+    success_message = "%(student_name)s has been registared successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+
+class LowerPrimaryGradeTwoStudentsUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin,UpdateView):
+    model = Lower_primary_grade_2
+    fields = '__all__'
+    success_message = "%(student_name)s details has been updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
+class LowerPrimaryGradeTwoStudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Lower_primary_grade_2
+    success_url = '/home/lower-primary-grade-two-list/'
+    success_message = "%(student_name)s details has been deleted successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
+# class based views for upper primary
+# class based views for lower primary grade three
+
+class LowerPrimaryGradeThreeStudentsListView(ListView):
+    model = Lower_primary_grade_3
+    context_object_name = 'students'
+
+
+class LowerPrimaryGradeThreeStudentsDetailView(DetailView):
+    model = Lower_primary_grade_3
+
+
+class LowerPrimaryGradeThreeStudentsCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
+    model = Lower_primary_grade_3
+    fields = '__all__'
+    success_url = '/home/lower-primary-grade-three-list/'
+    success_message = "%(student_name)s has been registared successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+
+class LowerPrimaryGradeThreeStudentsUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin,UpdateView):
+    model = Lower_primary_grade_3
+    fields = '__all__'
+    success_message = "%(student_name)s details has been updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
+class LowerPrimaryGradeThreeStudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Lower_primary_grade_3
+    success_url = '/home/lower-primary-grade-three-list/'
+    success_message = "%(student_name)s details has been deleted successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
 # class based views for upper primary
 
 class UpperPrimaryStudentsListView(ListView):
@@ -251,6 +468,143 @@ class UpperPrimaryStudentsUpdateView(SuccessMessageMixin, LoginRequiredMixin, Us
 class UpperPrimaryStudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Upper_primary
     success_url = '/home/upper-primary-students/'
+    success_message = "%(student_name)s details has been updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
+# end of class based views for upper primary grade five
+class UpperPrimaryGradeFiveStudentsListView(ListView):
+    model = Upper_primary_grade_5
+    context_object_name = 'students'
+
+
+class UpperPrimaryGradeFiveStudentsDetailView(DetailView):
+    model = Upper_primary_grade_5
+
+
+class UpperPrimaryGradeFiveStudentsCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
+    model = Upper_primary_grade_5
+    fields = '__all__'
+    success_url = '/home/upper-primary-grade-five/'
+    success_message = "%(student_name)s has been registared successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+
+class UpperPrimaryGradeFiveStudentsUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin,UpdateView):
+    model = Upper_primary_grade_5
+    fields = '__all__'
+    success_message = "%(student_name)s details has been updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
+class UpperPrimaryGradeFiveStudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Upper_primary_grade_5
+    success_url = '/home/upper-primary-grade-five/'
+    success_message = "%(student_name)s details has been updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
+# end of class based views for upper primary
+# end of class based views for upper primary grade six
+class UpperPrimaryGradeSixStudentsListView(ListView):
+    model = Upper_primary_grade_6
+    context_object_name = 'students'
+
+
+class UpperPrimaryGradeSixStudentsDetailView(DetailView):
+    model = Upper_primary_grade_6
+
+
+class UpperPrimaryGradeSixStudentsCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
+    model = Upper_primary_grade_6
+    fields = '__all__'
+    success_url = '/home/upper-primary-grade-six/'
+    success_message = "%(student_name)s has been registared successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+
+class UpperPrimaryGradeSixStudentsUpdateView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin,UpdateView):
+    model = Upper_primary_grade_6
+    fields = '__all__'
+    success_message = "%(student_name)s details has been updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            student_name=self.object.student_name,
+        )
+
+    def form_valid(self, form):
+        self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        student = self.get_object()
+        if self.request.user:
+            return True
+        return False
+
+
+class UpperPrimaryGradeSixStudentsDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Upper_primary_grade_6
+    success_url = '/home/upper-primary-grade-six/'
     success_message = "%(student_name)s details has been updated successfully"
 
     def get_success_message(self, cleaned_data):

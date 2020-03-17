@@ -1,0 +1,113 @@
+
+ {% extends 'school/base.html'%}
+ {% load static %}
+ {% block content %}
+<div class="container pt-4">
+	<div class="card">
+		<div class="mb-1 navbar navbar-light teal accent-1">
+			<div class="tooltip bs-tooltip-top" role="tooltip">
+			</div>
+           <div><a href="{% url 'home' %}" data-toggle="tooltip" title="home menu" class="card-link"><i class="fas fa-home"></i> Home</a></div>
+		   <div><a href="{% url 'send-message' %}" data-toggle="tooltip" title="send text message to parent" class="card-link"><i class="fas fa-money-check-alt"></i> Text Message</a></div>
+
+		</div>
+		<table class="card-body">
+		{% if messages %}
+			{% for message in messages %}
+				<div class='text-center alert alert-{{message.tags}}' id="upperprimaryperformancemymessage">
+				{{ message }}
+				</div>
+			{% endfor %}
+ 		{% endif %}
+		<h5 class="text-center p-3">{{ object.Student_name }}, performance</h5>
+
+        <table class="table text-center">
+			<thead class="thead-dark">
+			<tr>
+				<th>subjects</th>
+			    <th>scores per subject</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><span>Student Name</span></td>
+				<td>{{ object.Student_name }}</td>
+			</tr>
+			<tr>
+				<td><span>Kiswahili or kenya sign language</span></td>
+				<td>{{ object.Kiswahili_or_Kenya_Sign_Language }}</td>
+			</tr>
+			<tr>
+				<td><span>Home Science</span></td>
+				<td>{{ object.Home_Science }}</td>
+			</tr>
+			<tr>
+				<td><span>English</span></td>
+				<td>{{ object.English }}</td>
+			</tr>
+			<tr>
+				<td><span>Mathematical</span></td>
+				<td>{{ object.Mathematical }}</td>
+			</tr>
+			<tr>
+				<td><span>Agriculture</span></td>
+				<td>{{ object.Agriculture }}</td>
+			</tr>
+			<tr>
+				<td><span> Science and Technology</span></td>
+				<td>{{ object.Science_and_Technology }}</td>
+			</tr>
+			<tr>
+				<td><span>Creative Arts</span></td>
+				<td>{{ object.Creative_Arts }}</td>
+			</tr>
+			<tr>
+				<td><span>Physical and Health Education</span></td>
+				<td>{{ object.Physical_and_Health_Education }}</td>
+			</tr>
+			<tr>
+				<td><span>Religious education activities </span></td>
+				<td>{{ object.Religious_education_activities }}</td>
+			</tr>
+			<tr>
+				<td><span>Social Studies</span></td>
+				<td>{{ object.Social_Studies }}</td>
+
+			</tr>
+			<tr>
+				<td><span>Total score</span></td>
+				<td>
+				{{ object.get_total_upper_primary }}/1000
+				{% if object.get_total_upper_primary > 700 %}
+				 <p class="text-success">Your score is average</p>
+				 {%else%}
+				 <p class="text-danger">You fail, you need to improve</p>
+				 </td>
+				{%endif%}
+			</tr>
+			<tr>
+				<td><span>Teachers comment</span></td>
+				<td>{{ object.Teachers_comment }}</td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="d-flex justify-content-between">
+		<a href="{% url 'upper-primary-grade-five-performance' %}" class="pl-2" data-toggle="tooltip" title="navigate backwards"><i class="fas fa-backward"></i> Back</a>
+	    <a href="" data-toggle="tooltip" class="pr-2" title="print the document">Print <i class="fas fa-print"></i></a>
+		</div>
+
+		<div class="card-footer">
+			<p class="text-center text-muted">&copy;Copyright new education support system 2019-2020. All Rights observed!</p>
+		</div>
+		<script>
+			setTimeout(function(){
+			if ($("#upperprimaryperformancemymessage").length > 0 ){
+			$("#upperprimaryperformancemymessage").remove();
+			}
+			}, 3000)
+		</script>
+{% endblock content%}
+
+
+
+

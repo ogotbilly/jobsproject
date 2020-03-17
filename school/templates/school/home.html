@@ -16,29 +16,35 @@
       <ul class="list-unstyled">
       <li class="open">
       <div class="question">
-       <h2><a href="{% url 'students' %}" >Pre primary</a></h2>
+       <h2>Pre primary</h2>
         <span><i class='icon fas fa-angle-down'></i></span>
       </div>
       <div class="answer">
-       <p>Pre primary is the nursery school class 1-3</p>
+       <p><a href="{% url 'students' %}" >pre-primary-1</a></p>
+       <p><a href="{% url 'pri-primary-two-list' %}" >pre-primary-2</a></p>
       </div>
       </li>
       <li>
       <div class="question">
-        <h2><a href="{% url 'lower-primary-students' %}" >Lower primary</a></h2>
+        <h2>Lower primary</h2>
         <span><i class='icon fas fa-angle-down'></i></span>
       </div>
       <div class="answer">
-       <p>Lower primary runs for three years 4-6</p>
+       <p><a href="{% url 'lower-primary-students' %}" >grade one</a></p>
+       <p><a href="{% url 'lower-primary-grade-two-list' %}" >grade two</a></p>
+       <p><a href="{% url 'lower-primary-grade-three-list' %}" >grade three</a></p>
       </div>
       </li>
       <li>
       <div class="question">
-        <h2><a href="{% url 'upper-primary-students' %}">Upper primary</a></h2>
+        <h2>Upper primary</h2>
         <span><i class='icon fas fa-angle-down'></i></span>
       </div>
       <div class="answer">
-       <p>Upper primary runs for two years 6-8</p>
+     
+       <p><a href="{% url 'upper-primary-students' %}">grade four</a></p>
+       <p><a href="{% url 'upper-primary-grade-five-list' %}">grade five</a></p>
+       <p><a href="{% url 'upper-primary-grade-six-list' %}">grade six</a></p>
       </div>
       </li>
       </ul>
@@ -49,7 +55,6 @@
 
         <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i></button>
       </div>
-        </form>
     </div>
   </div>
 </div>
@@ -60,37 +65,50 @@
     <div class="modal-content">
       <div class="modal-header">
 
-        <h5 class="modal-title" id="myModalLabel">Choose lavel of student you wish to track progress</h5>
+        <h5 class="modal-title" id="myModalLabel">Students level</h5>
       </div>
 
       <div class="modal-body">
-        <div class="accordian">
-      <ul class="list-unstyled">
-      <li class="open">
-      <div class="question">
-       <a href="{% url 'pre-primary-performance' %}" >Pre primary</a>
-        <span><i class='icon fas fa-angle-down'></i></span>
-      </div>
-      </li>
-      <li>
-      <div class="question">
-        <a href="{% url 'lower-primary-performance' %}" >Lower primary</a>
-        <span><i class='icon fas fa-angle-down'></i></span>
-      </div>
-      </li>
-      <li>
-      <div class="question">
-        <a href="{% url 'upper-primary-performance' %}">Upper primary</a>
-        <span><i class='icon fas fa-angle-down'></i></span>
-      </div>
-      </li>
-	   </ul>
-	  </div>
+      
+         <div class="accordion-container">
+          <div class="set">
+            <a href="#">
+              Pre primary
+              <i class="fa fa-plus"></i>
+            </a>
+            <div class="content">
+              <p><a href="{% url 'pre-primary-performance' %}" >pre primary one</a></p>
+              <p><a href="{% url 'pre-primary-two-performance' %}" >pre primary two</a></p>
+            </div>
+          </div>
+          <div class="set">
+            <a href="#">
+              Lower primary
+              <i class="fa fa-plus"></i>
+            </a>
+            <div class="content">
+              <p><a href="{% url 'lower-primary-performance' %}" >grade one</a></p>
+              <p><a href="{% url 'lower-primary-grade-two-performance' %}" >grade two</a></p>
+              <p><a href="{% url 'lower-primary-grade-three-performance' %}" >grade three</a></p>
+            </div>
+          </div>
+          <div class="set">
+            <a href="#">
+              Upper primary
+              <i class="fa fa-plus"></i> 
+            </a>
+            <div class="content">
+              <p><a href="{% url 'upper-primary-performance' %}" >grade four</a></p>
+              <p><a href="{% url 'upper-primary-grade-five-performance' %}" >grade five</a></p>
+              <p><a href="{% url 'upper-primary-grade-six-performance' %}" >grade six</a></p>
+            </div>
+          </div>
+        </div>
+            
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i></button>
       </div>
-        </form>
     </div>
   </div>
 </div>
@@ -218,3 +236,4 @@
   </main>
   <!--Main layout-->
 {% endblock %}
+

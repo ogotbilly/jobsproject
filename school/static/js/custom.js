@@ -27,3 +27,4 @@ questions.forEach(question =>
   question.addEventListener("click", toggleAccordian)
 );
 //end of accordian script
+

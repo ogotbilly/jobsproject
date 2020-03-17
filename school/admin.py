@@ -1,5 +1,14 @@
 from django.contrib import admin
-from .models import Pre_primary, Lower_primary, Upper_primary
+from .models import (
+                    Pre_primary, 
+                    Lower_primary,
+                    Upper_primary,
+                    Pre_primary_2, 
+                    Lower_primary_grade_2, 
+                    Lower_primary_grade_3,
+                    Upper_primary_grade_5, 
+                    Upper_primary_grade_6
+)
 
 
 class SearchPrePrimary(admin.ModelAdmin):
@@ -26,4 +35,9 @@ class SearchUpperPrimary(admin.ModelAdmin):
 admin.site.register(Pre_primary, SearchPrePrimary)
 admin.site.register(Lower_primary, SearchLowerPrimary)
 admin.site.register(Upper_primary, SearchUpperPrimary)
+admin.site.register(Pre_primary_2)
+admin.site.register(Lower_primary_grade_2)
+admin.site.register(Lower_primary_grade_3)
+admin.site.register( Upper_primary_grade_5)
+admin.site.register(Upper_primary_grade_6)
 

@@ -20,9 +20,11 @@
 			{% endfor %}
 		{% endif %}	
 		</div>
-        <div><p class="ml-3">Date: <span class="badge badge-dark">{{ today }}</span></p></div>
-		<form method="POST">
-		{% csrf_token %}
+        <div>
+			<p class="ml-3">Date: <span class="badge badge-dark">{{ today }}</span></p>
+		</div>
+
+
 		<table class="table table-bordered">
 		<thead>
 			<tr>
@@ -41,12 +43,15 @@
 				</div>
 			</td>
 			<td>
-			{{form|crispy }}
-			<button type="submit" class="btn btn-info"><i class="fas fa-caret-right"></i> Next day</button>
+				<form method="POST">
+		        {% csrf_token %}
+			    {{form|crispy }}
+				</form>
+			<button type="submit" class="btn btn-info"><i class="fas fa-caret-right"></i> Submit</button>
 			</td>
 			</tr>
 		</tbody>
-		</form>
+
 		</table>
 		<br>
 		<div class="card-footer">

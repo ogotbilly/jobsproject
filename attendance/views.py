@@ -3,7 +3,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Pre_primary_1_attendance, Lower_primary_attendance, Upper_primary_attendance
 from .forms import PrePrimaryOneAttendanceForm, LowerPrimaryOneAttendanceForm, UpperPrimaryOneAttendanceForm
 
+
 def pre_primary_1(request):
+
     context = {
         "students": Pre_primary_1_attendance.objects.all(),
     }
@@ -59,14 +61,13 @@ def pre_primary_2_detail(request, id):
     return render(request, 'attendance/pre_primary_two_detail.html', context)
 
 
-
-
 def grade_1(request):
     context = {
         "students": Lower_primary_attendance.objects.all(),
     }
 
     return render(request, 'attendance/grade_one.html', context)
+
 
 def grade_one_detail(request, id):
 
@@ -85,8 +86,6 @@ def grade_one_detail(request, id):
     }
 
     return render(request, 'attendance/grade_one_detail.html', context)
-
-
 
 
 def grade_2(request):
